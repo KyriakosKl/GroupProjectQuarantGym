@@ -1,0 +1,296 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>E-wallet</title>
+    <link rel="stylesheet" href="wallet.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+    body {
+        z-index: 0;
+        position: relative;
+    }
+
+    .navbar-custom {
+        background-color: black;
+        height: 8rem;
+        width: 100%;
+        font-family: 'Russo One', sans-serif;
+    }
+
+
+    .custom-div {
+        z-index: 0;
+    }
+
+    #mobileNav {
+        z-index: 1;
+    }
+
+    .megacontainer {
+        /* background-color: #2196f3;  */
+        background:
+            linear-gradient(to bottom right, #7160F8 15%, transparent),
+            radial-gradient(circle at 100% 0%, rgba(255, 255, 255, .2) 10%, transparent 20%) center center / 15px 15px,
+            linear-gradient(to bottom right, #6f78c1, #95c4dc);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+
+    .wallet-container {
+        background-color: rgb(252, 251, 249);
+
+        width: 500px;
+        height: 500px;
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+        padding: 20px 20px 0;
+        margin: 0 auto;
+
+        position: relative;
+        border-radius: 5px;
+    }
+
+    .payment-logo {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 100px;
+        background: #f8f8f8;
+        border-radius: 50%;
+        box-shadow: 0 0 5px;
+        text-align: center;
+        line-height: 100px;
+    }
+
+    .payment-logo::before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 90px;
+        height: 90px;
+        background:
+            linear-gradient(to bottom right, #7160F8 15%, transparent),
+            radial-gradient(circle at 100% 0%, rgba(255, 255, 255, .2) 10%, transparent 20%) center center / 15px 15px,
+            linear-gradient(to bottom right, #6f78c1, #95c4dc);
+        border-radius: 50%;
+    }
+
+    .payment-logo p {
+        color: #f8f8f8;
+        position: relative;
+        bottom: 3px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 70px;
+    }
+
+    .page-title {
+        text-align: left;
+        padding-bottom: 20px;
+    }
+
+    .fa-user {
+        float: right;
+    }
+
+    .amount-box img {
+        width: 70px;
+        padding-bottom: 1%;
+    }
+
+    .amount {
+        margin-top: 10px;
+        margin-bottom: -10px;
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .amount span {
+
+        margin: 0 auto;
+    }
+
+
+
+    h2 {
+        font-family: 'Russo One', sans-serif;
+        color: black;
+        margin-top: 10%;
+    }
+
+    h4 {
+        padding-top: 10px;
+        color: black;
+    }
+
+    .btn-group {
+        margin: 20px 0;
+
+    }
+
+    .btn-group .btn {
+        background-color: rgba(18, 160, 136, 1);
+        color: white;
+        font-size: 20px;
+        margin-top: 10%;
+        margin-bottom: 5%;
+        padding: 5px 15px;
+        border-radius: 12px;
+        border: 1.5px solid rgb(255, 255, 255);
+        transition: 0.3s ease-in-out;
+
+    }
+
+    .btn-group .btn:hover {
+        color: white;
+        background-color: rgba(24, 180, 153, 1);
+
+    }
+
+    .dollar {
+        color: black;
+        margin-right: 2%;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    }
+
+    .number-dollar {
+        font-size: 35px;
+        color: rgb(0, 0, 0);
+        font-family: 'Russo One', sans-serif;
+    }
+
+    @media screen and (max-width: 700px) {
+        .wallet-container {
+
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            height: 520px;
+            ;
+        }
+
+        span {
+            margin-left: 30px;
+        }
+
+    }
+</style>
+
+<body>
+    <!-- header -->
+    <header id="header">
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav"
+                    aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon burger-custom"><img src="/images/burger2.png" alt=""
+                            style="height: 100%; width: 100%; object-fit: contain;"></span>
+                </button>
+
+
+                <div class="navbar-collapse collapse" style="background-color: black;" id="mobileNav">
+                    <ul class="navbar-nav ml-2 mt-2">
+                        <li class="nav-item mr-2">
+                            <img src="/images/main-logo.jpg" alt="" width="50px">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/aboutus">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/trainers">Trainers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/memberships">Memberships</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#contact">Contact</a>
+                        </li>
+                        <% if(req.session.user) { %>
+                            <li class="nav-item d-lg-none">
+                                <a href="/detailsuser" class="nav-link text-white account">
+                                    <%=req.session.user.fname%>
+                                </a>
+                            </li>
+                            <% } else { %>
+                                <li class="nav-item d-lg-none">
+                                    <a href="/login" class="nav-link text-white">Sign in</a>
+                                </li>
+                                <li class="nav-item d-lg-none">
+                                    <a href="/signup" class="nav-link text-white">Sign up</a>
+                                </li>
+                                <% } %>
+                    </ul>
+                </div>
+                <% if(req.session.user) { %>
+                    <div class="m-3 text-right d-none d-lg-block"><a class="account" href="/detailsuser">
+                            <%=req.session.user.fname%><img src="/images/user.png" alt="user" width="30rem">
+                        </a></div>
+                    <% } else { %>
+                        <div class="m-3 text-right text-white d-none d-lg-block">
+                            <a href="/login" class="nav-link text-white">Sign in</a>
+                        </div>
+                        <div class="m-3 text-right text-white d-none d-lg-block">
+                            <a href="/signup" class="nav-link text-white">Sign up</a>
+                        </div>
+                        <% } %>
+            </div>
+        </nav>
+
+    </header>
+    <!-- end of header -->
+    <div class="megacontainer">
+        <div class="wallet-container text-center">
+            <div class="payment-logo">
+                <p>W</p>
+            </div>
+            <h2 class="page-title text-center">
+                <%=req.session.user.fname%>'s wallet
+
+            </h2>
+            <hr>
+            <div class="amount-box text-center">
+                <img src="https://lh3.googleusercontent.com/ohLHGNvMvQjOcmRpL4rjS3YQlcpO0D_80jJpJ-QA7-fQln9p3n7BAnqu3mxQ6kI4Sw"
+                    alt="wallet" />
+
+                <h4>Your total balance is:</h4>
+                <p class="amount"><span class="dollar">$</span><span class="number-dollar">
+                        <%=req.session.user.balance%>
+                    </span></p>
+            </div>
+
+            <div class="btn-group text-center">
+                <form name="moneyForm" action="" method="POST">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text dollar"><img src="/images/credit-card.svg" alt="card"></span>
+                        </div>
+
+                        <input type="number" class="form-control" name="price" min="0" max="10000" />
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-light">Add Funds</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>

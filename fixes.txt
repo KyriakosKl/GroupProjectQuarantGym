@@ -1,0 +1,43 @@
+fixes : 
+
+fixed: wallet negative value response
+
+fixed: wallet maximum value (larger than bigint returned 1)
+
+fixed: double logged in check in policies
+
+fixed: added status responses
+
+fixed: duplicate code
+
+testing : 
+
+module : /tools/timers : built small timer function to locate black holes
+module : /utilities/debugPring : object logging utility
+
+
+dimitris : need to add constraint to only have *1* membership of each name.
+	ex. no two 'Bronze', 'Silver' etc.
+	-> temp fix. search now only returns the first db record with the given name. latest are skipped. Only *1* membership taken into account
+
+
+
+
+
+frontend : 	when in signup page the sign in link appears distorted (global or local?)
+		when in signup page Home, contact does nothing
+		fix 404 in dev tools (css and js scripts not found)
+		/detailsuser make not editable fields not editable
+		
+		dev tools sails_locals not defined
+		fix "new sails app" title
+		
+suggestion : when logged in as Admin and click on my account link -> redirects to admin dash
+
+
+testing : 
+
+module : /tools/timers : built small timer function to locate black holes
+module : /utilities/debugPring : object logging utility
+
+

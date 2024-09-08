@@ -1,0 +1,340 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>User details</title>
+    <link rel="stylesheet" href="userdetailstyles2.css">
+    <title>User details</title>
+    <style>
+        body {
+            background: url('/assets/images/MicrosoftTeams-image\ \(1\).png') center/cover no-repeat fixed;
+        }
+
+        #exampleFormControlTextarea1 {
+            resize: none;
+        }
+
+        .cancel {
+            background-color: #fff;
+            color: rgba(214, 79, 78, 1);
+            font-size: 20px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(214, 79, 78, 1);
+            transition: 0.3s ease-in-out;
+        }
+
+        .cancel:hover {
+            color: white;
+            background-color: rgba(214, 79, 78, 1);
+        }
+
+        .submitok {
+            color: #fff;
+            background-color: rgba(18, 160, 136, 1);
+            font-size: 20px;
+            padding: 5px 15px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(18, 160, 136, 1);
+            transition: 0.3s ease-in-out;
+        }
+
+        .submitok:hover {
+            background-color: rgba(24, 180, 153, 1);
+            border: 1.5px solid rgba(24, 180, 153, 1);
+            color: #fff;
+        }
+
+        .upgrd {
+            color: #fff;
+            background-color: rgb(191, 161, 41);
+            border: 1.5px solid rgb(177, 147, 27);
+
+            font-size: 20px;
+            padding: 5px 15px;
+            border-radius: 12px;
+
+            transition: 0.3s ease-in-out;
+        }
+
+        .upgrd:hover {
+            background-color: rgb(210, 181, 69);
+            border: 1.5px solid rgb(210, 181, 69);
+        }
+    </style>
+</head>
+<!-- HEADER -->
+<header id="main-header" class="py-3 bg-dark text-white mb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>
+                    <i class="fas fa-user mr-4"></i>My account
+                </h1>
+            </div>
+            <div class="d-flex flex-row justify-content-end flex-around tit mt-2">
+                <div class="col-md-1 ml-1">
+                    <a href="/"><button type="submit" class="btn btn-primary">Home</button></a>
+                </div>
+                <form action="/goodbye" method="POST" class="col-md-1">
+                    <div class="col-md-1 mr-2">
+                        <button type="submit" class="btn btn-danger mr-1">Logout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- PROFILE -->
+<section id="profile">
+    <div class="container mb-3 ">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>User details</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <form action='' method="POST" enctype="multipart/form-data">
+                            <div class="col-md-5 d-flex flex-column align-items-end">
+                                <img src="<%=location%>" alt="" class="d-block img-fluid mb-3 mr-5">
+                                <div class="form-group">
+                                    <input type="file" name="avatar" class="form-control-file">
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="firstname">
+                                    <h5>First name:</h5>
+                                </label>
+                                <input type="text" id="firstname" name="fname" readonly class="form-control"
+                                    value="<%=firstName%>">
+                            </div>
+                            <hr>
+                            <div class="col-md-4 mb-3">
+                                <label for="lastname">
+                                    <h5>Last Name:</h5>
+                                </label>
+                                <input type="text" id="lastname" name="lname" readonly class="form-control"
+                                    value="<%=lastName%>">
+                            </div>
+                            <hr>
+                            <div class="col-md-4 mb-3">
+                                <label for="address">
+                                    <h5>Address:</h5>
+                                </label>
+                                <input type="text" id="address" name="address" class="form-control"
+                                    value="<%=address%>">
+                            </div>
+                            <hr>
+                            <div class="col-md-4 mb-3">
+                                <label for="birthdate">
+                                    <h5>Birthdate:</h5>
+                                </label>
+                                <input type="date" id="birthdate" name="bdate" class="form-control"
+                                    value="<%=birthDate%>">
+                            </div>
+                            <hr>
+                            <div class="col-md-4 mb-3">
+                                <label for="e-mail">
+                                    <h5>e-mail:</h5>
+                                </label>
+                                <span>
+                                    <%=email%>
+                                </span>
+                                </br>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">
+                                    <h5>Bio:</h5>
+                                </label>
+                                <textarea class="form-control" name="bio" id="exampleFormControlTextarea1"
+                                    rows="3"><%=bio%></textarea>
+                            </div>
+                            <hr>
+                            <!-- This part/data of the membership,money and sessions left are not passing through a controller. Need to be worked on. -->
+                            <% if(!req.session.user.isTrainer) {%>
+                            <div class="col-md-3 mb-3">
+                                <label for="money">
+                                    <h5>Money:</h5>
+                                </label>
+                                <input type="text" class="form-control" readonly value="<%=balance%>">
+                                <!-- <a href="/wallet"><button class="btn btn-outline-primary mt-2">Top
+                                        up</button></a> -->
+                            </div>
+                            <hr>
+                            <div class="col">
+                                <h5 class="mb-1">Sessions left:</h5>
+                                <p class="text-muted">
+                                    <%=sessionsLeft%>
+                                </p>
+                            </div>
+                            <hr>
+                            <% } %>
+                            
+                            <div class="d-flex justify-content-left ml-3">
+                                <button type="submit" class="btn submitok">Submit</button>
+                            </div>
+                        </form>
+                        <!-- <hr> -->
+
+                        <% if(!req.session.user.isTrainer) {%>
+                        <!-- Button trigger modal -->
+                        <div class="col d-flex align-items-end flex-column">
+                            <h5 class="mb-1">Membership</h5>
+                            <p class="text-muted">
+                                <%=membershipName%>
+                            </p>
+                            <button type="button" class="btn text-white upgrd ml-2" data-toggle="modal"
+                                data-target="#exampleModal">Upgrade</button>
+                        </div>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Upgrade Membership
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        You are about to get a new membership or cancel your current one and upgrade to a new one!
+                                        Are you sure you want to proceed?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <a href="/memberships"><button type="button" class="btn btn-primary">Yes take me
+                                                there</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col d-flex align-items-start flex-column">
+                            <h5 class="modal-title pl-2" id="exampleModalLabel">Wallet
+                            </h5>
+                            <a href="/wallet"><button class="btn btn-outline-primary mt-2">Top
+                                    up</button></a>
+                        </div>
+                        <% } %>
+                        <br>
+
+                        <!-- End of Modal Section -->
+                        <hr>
+                        <div class="col">
+                            <h5 class="">Upcoming Trainings:</h5>
+                            <div class="table-responsive-sm">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Datetime</th>
+                                            <th scope="col">Trainer </th>
+                                            <th scope="col">Location </th>
+                                            <th scope="col">Cancel</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% let cancelUrl='cancel' %>
+                                            <% for(let i=0; i < payloadFuture.length; i++) { %>
+                                                <% let localId=Number(parseInt(payloadFuture[i]._id) + 1) %>
+                                                    <% console.log(localId,typeof(localId)) %>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <%= payloadFuture[i].startDate %>
+                                                            </th>
+                                                            <td>
+                                                                <%= payloadFuture[i].firstName %>
+                                                                    <%= payloadFuture[i].lastName %>
+                                                            </td>
+                                                            <td>
+                                                                <%= payloadFuture[i].location %>
+
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn cancel"
+                                                                    onclick="deleteTraining('<%=url%>' +'/trainings/cancel/' +'<%=payloadFuture[i]._id%>')">
+                                                                    Cancel</button>
+
+                                                            </td>
+                                                        </tr>
+
+                                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col">
+                            <h5 class="mb-1">Past Trainings:</h5>
+                            <div class="table-responsive-sm">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Datetime</th>
+                                            <th scope="col">Trainer </th>
+                                            <th scope="col">Location </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(let i=0; i < payloadPast.length; i++) { %>
+
+
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= payloadPast[i].startDate %>
+                                                </th>
+                                                <td>
+                                                    <%= payloadPast[i].firstName %>
+                                                        <%= payloadPast[i].lastName %>
+                                                </td>
+                                                <td>
+                                                    <%= payloadPast[i].location %>
+
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function deleteTraining(url) {
+
+            window.location.replace(url);
+
+        }
+    </script>
+</section>
+

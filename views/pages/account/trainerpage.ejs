@@ -1,0 +1,372 @@
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/style2.css">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<!-- <link rel="stylesheet" href="trainer_list.css"> -->
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+    body {
+        /* background: rgb(229, 230, 233) */
+        background-color: #fff;
+    }
+
+
+    .navbar-custom {
+        background-color: black;
+        height: 8rem;
+        font-family: 'Russo One', sans-serif;
+    }
+
+    .profile-button {
+        background: #7160F8;
+        box-shadow: none;
+        border: none
+    }
+
+    .profile-button:hover {
+        background: #0a090a
+    }
+
+    .description {
+        text-align: justify;
+    }
+
+    .link {
+        color: white;
+    }
+
+    .sectitle {
+        padding-bottom: 10px;
+        color: rgb(124, 124, 124);
+    }
+
+    #selected-dates {
+        padding: 5px 10px;
+        width: 200px;
+        height: 40px;
+        border-radius: 10px;
+        font-size: 20px;
+        color: rgb(97, 97, 97);
+        background-color: rgba(228, 228, 228, 0.6);
+        border: 1px solid rgba(201, 200, 200, 0.3);
+    }
+
+    #locationId {
+        padding: 5px 10px;
+        width: 200px;
+        height: 40px;
+        border-radius: 10px;
+        font-size: 20px;
+        color: rgb(97, 97, 97);
+        background-color: rgba(228, 228, 228, 0.6);
+        border: 1px solid rgba(201, 200, 200, 0.3);
+    }
+
+    .customback {
+        box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+    }
+
+    .card1 {
+        padding-bottom: 60px;
+    }
+
+    #picker {
+        padding-bottom: 15px;
+    }
+</style>
+
+<!-- menu bar -->
+<header id="header">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav"
+                aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon burger-custom"><img src="/images/burgerIcon.png" alt=""
+                        style="height: 100%; width: 100%; object-fit: contain;"></span>
+            </button>
+
+
+            <div class="navbar-collapse collapse " style="background-color: black;" id="mobileNav">
+                <ul class="navbar-nav ml-3">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/trainers">Trainers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/memberships">Memberships</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#contact">Contact</a>
+                    </li>
+                    <% if(req.session.user) { %>
+                        <li class="nav-item d-lg-none">
+                            <a href="/detailsuser" class="nav-link text-white account">
+                                <%=req.session.user.fname%>
+                            </a>
+                        </li>
+                        <% } else { %>
+                            <li class="nav-item d-lg-none">
+                                <a href="/login" class="nav-link text-white">Sign in</a>
+                            </li>
+                            <li class="nav-item d-lg-none">
+                                <a href="/signup" class="nav-link text-white">Sign up</a>
+                            </li>
+                            <% } %>
+                </ul>
+            </div>
+            <% if(req.session.user) { %>
+                <div class="m-3 text-right d-none d-lg-block"><a class="account" href="/detailsuser">
+                        <%=req.session.user.fname%><img src="/images/user.png" alt="user" width="30rem">
+                    </a></div>
+                <% } else { %>
+                    <div class="m-3 text-right text-white d-none d-lg-block">
+                        <a href="/login" class="nav-link text-white">Sign in</a>
+                    </div>
+                    <div class="m-3 text-right text-white d-none d-lg-block">
+                        <a href="/signup" class="nav-link text-white">Sign up</a>
+                    </div>
+                    <% } %>
+        </div>
+    </nav>
+
+</header>
+
+<!-- end of menu bar -->
+
+<!-- start of card section -->
+
+<div class="container rounded bg-white mt-5 card1">
+    <h1>Trainer <%=trainerObject.trainerLastName%> Calendar</h1>
+    <div class="row py-2 ">
+
+        <div class="col-md-8">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-end mb-3">
+                    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                        <h5 class="mr-3">
+                            <%=trainerObject.trainerFirstName%>
+                        </h5>
+                    </div>
+                    <h5 class="text-right">
+                        <%=trainerObject.trainerLastName%>
+                    </h5>
+                </div>
+                <hr>
+                <div class="text-center mt-5">
+                    <h6 class="description text-muted">
+                        <%=trainerObject.trainerBio%>
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-4 mt-2">
+            <div class="card card-inverse card-info customback">
+                <img class="card-img-top" src="<%=trainerObject.trainerImage%>">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  end of card section -->
+
+<div class="jquery-script-clear"></div>
+<div class="container">
+    <div id="picker"></div>
+    <div>
+        <div class="formselect">
+            <form id="formid" method="POST">
+                <div class="sectitle">
+                    <h5>Select a slot</h5>
+                    <input type="text" name="startDate" id="selected-dates" value="Choose datetime" readonly>
+                </div>
+                <div class="sectitle">
+                    <h5>Select a location</h5>
+                </div>
+                <!-- </select> -->
+
+                <select id="locationId" name="locationId">
+                    <% for(let i in trainingLocations) { %>
+                        <option id="locations" value="<%= trainingLocations[i].id%>">
+                            <%= trainingLocations[i].location %>
+                        </option>
+                        <% } %>
+
+                </select>
+                <!-- end of </select> -->
+
+                <input type="hidden" name="isCancelled" value="false">
+                <!-- error popup message -->
+                <% if(errorList.error) { %>
+                    <div class="container mt-2">
+                        <div class="alert alert-danger" role="alert">
+                            <h5 class="alert-heading">
+                                <%=errorList.error%>
+                            </h5>
+                            <p class="mb-0 errorText" id="error">
+                            </p>
+                        </div>
+                    </div>
+                    <% } %>
+                        <!-- end of error popup message -->
+                        <button type="submit" id="bookbtn">Book session</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
+
+<script type="text/javascript">
+    (function ($) {
+        $('#picker').markyourcalendar({
+            availability: [
+                ['9:00', '12:00', '17:00'],
+                ['9:00', '12:00', '17:00'],
+                ['11:00', '17:00'],
+                ['11:00', '17:00'],
+                ['9:00', '12:00', '17:00'],
+                ['9:00', '12:00', '17:00'],
+                ['9:00', '12:00', '17:00']
+
+            ],
+            isMultiple: false,
+            onClick: function (ev, data) {
+                // data is a list of datetimes
+                console.log(data);
+                var html = ``;
+                $.each(data, function () {
+                    var d = this.split(' ')[0];
+                    var t = this.split(' ')[1];
+                    html += d + " " + t;
+                });
+                $('#selected-dates').val(html);
+            },
+            onClickNavigator: function (ev, instance) {
+                var arr = [
+                    [
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00']
+                    ],
+                    [
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00']
+                    ],
+                    [
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00']
+                    ],
+                    [
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00']
+                    ],
+                    [
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00']
+                    ],
+                    [
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00']
+                    ],
+                    [
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['11:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00'],
+                        ['9:00', '12:00', '17:00']
+                    ]
+                ]
+                var rn = Math.floor(Math.random() * 10) % 7;
+                instance.setAvailability(arr[rn]);
+            }
+        });
+    })(jQuery);
+</script>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<script>
+    try {
+        fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function (response) {
+            return true;
+        }).catch(function (e) {
+            var carbonScript = document.createElement("script");
+            carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+            carbonScript.id = "_carbonads_js";
+            document.getElementById("carbon-block").appendChild(carbonScript);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+</script>
+<script>
+    $('form#formid').submit(function () {
+        $(this).children('button[type=submit]').prop('disabled', true);
+    });
+</script>

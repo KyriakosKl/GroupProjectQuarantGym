@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <title>Document</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+        @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+        body {
+            background-color: rgb(247, 246, 255);
+        }
+
+        .navbar-custom {
+            background-color: black;
+            height: 8rem;
+            font-family: 'Russo One', sans-serif;
+        }
+
+        .account {
+            text-decoration: none;
+            margin-top: 20px;
+            color: white;
+
+        }
+
+        .custom-div {
+            z-index: 0;
+        }
+
+        #mobileNav {
+            z-index: 1;
+        }
+
+        div ul li a {
+            font-size: 1.2rem;
+        }
+
+        h3 {
+            font-family: 'Permanent Marker', cursive;
+        }
+
+
+        /* button {
+            background: none;
+            color: #6098ff;
+            border: 2px solid;
+            padding: 1em 2em;
+            font-size: 1em;
+            transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+        }
+
+        button:hover {
+            border-color: #e75cff;
+            color: white;
+            box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
+            transform: translateY(-0.25em);
+            cursor: pointer;
+        } */
+
+        .p-modify {
+            text-align: center;
+            max-width: 70%;
+            margin: 10% auto;
+            font-size: larger;
+        }
+
+        .photoconfig {
+            max-height: 100%;
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            margin: 2% 0;
+        }
+
+        h1:hover {
+            transform: translateY(-0.15em);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        a:hover {
+            color: rgb(253, 168, 10);
+        }
+
+        .h1-main {
+            background-color: #9a8ef3;
+        }
+
+        .display-text-a {
+            border-radius: 10px;
+        }
+
+        .display-text-b {
+            display: flex;
+            justify-content: left;
+        }
+
+        .custom-footer {
+            font-family: 'Russo One', sans-serif;
+            background-color: black;
+        }
+
+        /* contact */
+
+        .custom-contact {
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        #contact {
+            background-color: black;
+        }
+
+        /* .btnseemore {
+            background-color: #fff;
+            color: rgba(166, 155, 251, 1);
+            font-size: 24px;
+            padding: 5px 20px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(166, 155, 251, 1);
+            transition: 0.3s ease-in-out;
+        }
+
+        .btnseemore:hover {
+            color: white;
+            background-color: rgba(166, 155, 251, 1);
+        } */
+        .btn-see {
+            text-decoration: none;
+            border: 1px solid #7160F8;
+            position: relative;
+            background-color: rgb(15, 15, 15);
+            overflow: hidden;
+            font-size: 1.1rem;
+            padding: 0.8rem 2.2rem;
+            color: rgb(225, 202, 247);
+            text-transform: uppercase;
+            border-radius: 10px;
+            font-family: 'Russo One', sans-serif;
+            letter-spacing: 0.15rem;
+        }
+
+        .btn-see:hover {
+            box-shadow: 1px 1px 10px 3px #7160F8;
+        }
+
+        .btn-see:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg,
+                    transparent,
+                    /* rgb(103, 77, 197), */
+                    silver,
+                    transparent);
+            transition: all 650ms;
+        }
+
+        .btn-see:hover:before {
+            left: 100%;
+        }
+
+        a {
+            color: black;
+        }
+
+        .title-underline {
+            width: 100px;
+            border: 2px solid #7160F8;
+            margin: 0 auto;
+            background-color: #7160F8;
+        }
+
+        .content-divider {
+            height: 0.5rem;
+            background: linear-gradient(to left,
+                    #7160F8,
+                    rgb(230, 234, 247),
+                    #7160F8);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <!-- menu bar -->
+        <header id="header">
+            <nav class="navbar navbar-expand-lg navbar-custom">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav"
+                        aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon burger-custom"><img src="/images/burgerIcon.png" alt=""
+                                style="height: 100%; width: 100%; object-fit: contain;"></span>
+                    </button>
+
+
+                    <div class="navbar-collapse collapse" style="background-color: black;" id="mobileNav">
+                        <ul class="navbar-nav ml-3">
+                            <li class="nav-item">
+                                <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/trainers">Trainers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/memberships">Memberships</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#contact">Contact</a>
+                            </li>
+                            <% if(req.session.user) { %>
+                                <li class="nav-item d-lg-none">
+                                    <a href="/detailsuser" class="nav-link text-white account">
+                                        <%=req.session.user.fname%>
+                                    </a>
+                                </li>
+                                <% } else { %>
+                                    <li class="nav-item d-lg-none">
+                                        <a href="/login" class="nav-link text-white">Sign in</a>
+                                    </li>
+                                    <li class="nav-item d-lg-none">
+                                        <a href="/signup" class="nav-link text-white">Sign up</a>
+                                    </li>
+                                    <% } %>
+                        </ul>
+                    </div>
+                    <% if(req.session.user) { %>
+                        <div class="m-3 text-right d-none d-lg-block"><a class="account" href="/detailsuser">
+                                <%=req.session.user.fname%><img src="/images/user.png" alt="user" width="30rem">
+                            </a></div>
+                        <% } else { %>
+                            <div class="m-3 text-right text-white d-none d-lg-block">
+                                <a href="/login" class="nav-link text-white">Sign in</a>
+                            </div>
+                            <div class="m-3 text-right text-white d-none d-lg-block">
+                                <a href="/signup" class="nav-link text-white">Sign up</a>
+                            </div>
+                            <% } %>
+                </div>
+            </nav>
+
+        </header>
+
+        <!-- end of menu bar -->
+        <div class="row">
+            <div class="col-lg-6 col-md-12 text-right h1-main display-text-a">
+                <h1><a href="" style="text-decoration: none;">Locations</a></h1>
+            </div>
+            <div class="col-lg-6 col-md-12 display-text-b">
+                <h1><a href="/categories" style="text-decoration: none;">Workouts</a></h1>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row mt-2 mx-1 custom-div">
+            <div class="col-lg-6 col-md-12">
+                <!-- <img src="/images/pilates2.png" width="100%"> -->
+                <img src="images/ethnikosKiposPhotos.jpg" width="100%">
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <h3 class="mb-5 d-flex justify-content-center pt-5">Athens Center</h3>
+                <p class="text-muted p-modify">The National Garden of Athens: Right in the heart of Athens, between
+                    Syntagma
+                    Square and the Kallimarmaro (Panathenaic) Stadium, stands the famous National Garden of Athens, a
+                    beautiful area to escape the noisy city center and relax in a lush green environment. It is almost
+                    unbelievable that such an amazing garden is situated among the busiest avenues of the city and still
+                    it is so well-protected from noise.</p>
+                <div class="d-flex justify-content-center">
+                    <a href="https://www.google.com/maps/place/Εθνικός+Κήπος/@37.9726234,23.7384064,18z/data=!4m5!3m4!1s0x14a1bd3fbd35240d:0x8c3c56b60e730b9c!8m2!3d37.9728859!4d23.7373942"
+                        target="_blank"><button class="btn-see">See on map</button></a>
+                </div>
+            </div>
+        </div>
+        <hr class="d-lg-none">
+        <div class="content-divider"></div>
+
+        <div class="row mx-1">
+
+            <div class="col-lg-6 col-md-12">
+                <h3 class="d-flex justify-content-center pt-5 mb-5">Peristeri</h3>
+                <p class="text-muted p-modify">The park was opened by the head of the region of Attica, Yiannis Sgouros,
+                    the vice-head of the regional division of Western Athens, Konstantinos Papandoniou and Peristeri’s
+                    mayor Andreas Pachatouridis. One of the region’s most important environmental projects, the park has
+                    improved the lives of thousands of people in the area – as well as the environment itself.</p>
+                <div class="d-flex justify-content-center">
+                    <a href="https://www.google.com/maps/place/Άλσος+Περιστερίου/@38.0168597,23.686347,17z/data=!4m5!3m4!1s0x14a1a346a68e1649:0xfb0fbcced228dd!8m2!3d38.0168599!4d23.6863471"
+                        target="_blank"><button class="btn-see">See on map</button></a>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-md-12 photoconfig">
+                <img src="images/peristeriPhoto2.jpg" width="100%">
+            </div>
+
+        </div>
+        <hr class="d-lg-none">
+        <div class="content-divider"></div>
+
+
+        <div class="row mx-1">
+            <div class="col-lg-6 col-md-12 photoconfig">
+                <img src="images/marousiPhoto.jpg" width="100%">
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <h3 class="mb-5 d-flex justify-content-center pt-5">Marousi</h3>
+                <p class="text-muted  p-modify">Syngros Forest was bequeathed to the Athens Agricultural Society by the
+                    wife of Andreas Syngros, who stipulated that the land be used to train farmers and gardeners.
+                    Syngros Mansion and Agios Andreas neo-Gothic chapel are also here. Although more than 400 hectares
+                    of woodland were destroyed by fire in 1981, the area is completely reforested and the estate now
+                    boasts more than 700 hectares of Aleppo pines and 200 hectares reserved for agriculture.</p>
+                <div class="d-flex justify-content-center">
+                    <a href=https://www.google.com/maps/place/%CE%9A%CF%84%CE%AE%CE%BC%CE%B1+%CE%A3%CF%85%CE%B3%CE%B3%CF%81%CE%BF%CF%8D/@38.0604959,23.820181,16.71z/data=!4m5!3m4!1s0x14a19ed132e0a15d:0x5251e730dbc28c8d!8m2!3d38.0626449!4d23.8184988"
+                        target="_blank"> <button class="btn-see">See on map</button></a>
+                </div>
+            </div>
+        </div>
+        <hr class="d-lg-none">
+        <div class="content-divider"></div>
+
+        <div class="row mx-1">
+            <div class="col-lg-6 col-md-12">
+                <h3 class="d-flex justify-content-center pt-5 mb-5">Glyfada</h3>
+                <p class="text-muted  p-modify">Glyfada beach is found in front of the famous coastal settlement where
+                    many Athenians visit during the summer season. It is located 16 km south of the city of Athens. In
+                    Glyfada, you will not find the typical pristine beaches, but you wil surely enjoy a refreshing swim
+                    at the crystalline waters and a relaxing sunbath. There are many ways to reach Glyfada beach, from
+                    any location in Athens.</p>
+                <div class="d-flex justify-content-center">
+                    <a href="https://www.google.com/maps/place/Παραλία+Αστέρια/@37.8656008,23.739552,16.5z/data=!4m5!3m4!1s0x14a1bfca01ed4b05:0x79adb4e56bff790b!8m2!3d37.8661024!4d23.7398028"
+                        target="_blank"><button class="btn-see">See on map</button></a>
+
+                </div> <br>
+            </div>
+            <div class="col-lg-6 col-md-12 photoconfig">
+                <img src="images/glifadaphoto.jpg" width="100%">
+            </div>
+        </div>
+        <div class="content-divider"></div>
+    </section>
+
+    <!-- footer -->
+    <section class="pb-1" id="contact">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4 px-3 text-center my-5 pt-3">
+                    <img src="/images/main-logo.jpg" class="img-fluid mb-3" alt="company image" width="150px" />
+
+                    <div class="col text-center">
+                        <h2 class="display-5 text-uppercase text-white my-4 h2title">
+                            <strong>follow us on</strong>
+                        </h2>
+                        <div class="row">
+                            <div class="col text-center">
+                                <a href="https://www.facebook.com/" class="btn">
+                                    <img src="/images/facebook.png" alt="" width="30rem">
+                                </a>
+                                <a href="https://www.instagram.com/" class="btn">
+                                    <img src="/images/instagram.png" alt="" width="30rem">
+                                </a>
+                                <a href="https://twitter.com/" class="btn">
+                                    <img src="/images/twitter.png" alt="" width="30rem">
+                                </a>
+                                <a href="https://www.youtube.com/" class="btn">
+                                    <img src="/images/youtube.png" alt="" width="30rem">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="title-underline mt-4 bg-secondary"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-5 mx-auto px-3 text-center my-5">
+                    <!-- section title -->
+                    <div class="row">
+                        <div class="col text-center mb-1">
+                            <h1 class="text-uppercase text-white custom-contact">contact us</h1>
+                            <div class="title-underline my-3 bg-secondary">
+                                <div class="title-underline__center"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of section title -->
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class="mr-3"> <i class=" text-white fas fa-map"></i> </span>
+                        <p class="text-white text-capitalize">
+                            123 main street Athens, ATT 90020
+                        </p>
+                    </div>
+
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class=" mr-3"> <i class=" text-white fas fa-phone"></i> </span>
+                        <p class="text-white text-capitalize">
+                            + 123 456 789
+                        </p>
+                    </div>
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class="mr-3"> <i class=" text-white fas fa-envelope"></i> </span>
+                        <p class="text-white text-capitalize">
+                            email@email.com
+                        </p>
+                    </div>
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class="mr-3"> <i class="text-white fas fa-clock"></i> </span>
+                        <p class="text-white text-capitalize">
+                            mon - sat 8:00 AM - 7:00 PM
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <p class="mt-2 text-capitalize text-muted text-center">Copyright 2021@ Quarantgym is registered
+            trademark of
+            Quarantgym
+            International Ltd. All rights reserved.</p>
+    </section>
+    <!-- end of footer -->
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

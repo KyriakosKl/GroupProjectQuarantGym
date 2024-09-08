@@ -1,0 +1,281 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: #000;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+    }
+
+    .megawrap {
+        background-color: #fff;
+    }
+
+    span {
+        padding: 0 8px;
+    }
+
+    h1 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        background-color: #000;
+        padding: 30px 20px;
+        color: #fff;
+        text-align: center;
+    }
+
+    h3 {
+        padding-bottom: 20px 0;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+    }
+
+    h4 {
+        padding: 30px 0;
+    }
+
+    .fields {
+        display: flex;
+        padding: 10px;
+    }
+
+    .lab {
+        margin-right: 10px;
+    }
+
+    #btn {
+        margin-left: 10px;
+    }
+
+    .container1 {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .form1 {
+        display: block;
+        width: 50%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .megawrap {
+        margin: 0 auto;
+        padding: 40px 0;
+        width: 80%;
+        border: 1px solid #000;
+    }
+
+    .blk {
+        background-color: black;
+    }
+
+    .loc {
+        padding-top: 20px;
+    }
+
+    .membsection {
+        padding-bottom: 20px;
+    }
+
+    .locationsection {
+        padding: 20px 0;
+    }
+
+    .btnsection {
+
+        display: flex;
+    }
+</style>
+<div class="megawrap">
+    <h1>Admin Dashboard</h1>
+    <!-- Button trigger modal -->
+    <div class="btnsection">
+        <a href="/"><button type="button" class="btn btn-outline-primary">
+                Go to homepage
+            </button></a>
+        <form action="/goodbye" method="POST" class="col-md-1">
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-danger mr-1">Logout</button>
+            </div>
+        </form>
+    </div>
+    <div class="container1">
+        <h4>Select a query! You do not have to fill in all fields to get the result.</h4>
+        <!-- start of form -->
+        <form method="POST" class="row g-3 form1">
+            <div class="col-auto">
+                <label for="usertype">Select</label>
+                <select class="form-select" id="usertype" name="usertype" aria-label="Default select example">
+                    <option value="">Open this select menu</option>
+                    <option value="Customers">Customers</option>
+                    <option value="Trainers">Trainers</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <label for="userprop">that have</label>
+                <select class="form-select" id="userprop" name="userprop" aria-label="Default select example">
+                    <option value="">Open this select menu</option>
+                    <option value="Training">Training</option>
+                    <option value="Membership">Membership</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <label for="userprop2">and is</label>
+                <select class="form-select" id="userprop2" name="userprop2" aria-label="Default select example">
+                    <option value="">Open this select menu</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-1 blk">Submit</button>
+            </div>
+        </form>
+        <br>
+        <hr>
+        <br>
+        <h2>Date range/Total sessions queries</h2>
+        <h4>Select customers and their total sessions count for a specific date range</h4>
+        <br><br>
+        <form method="POST" class="row g-3 form1">
+            <div class="col-auto">
+                <label for="startDate">
+                    <h5>StartDate:</h5>
+                </label>
+                <input type="date" id="sdate" name="startDate" class="form-control">
+            </div>
+            <div class="col-auto">
+                <label for="startDate">
+                    <h5>EndDate:</h5>
+                </label>
+                <input type="date" id="ndate" name="endDate" class="form-control">
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-1 blk">Submit</button>
+            </div>
+        </form>
+        <!-- end of form -->
+        <br><br>
+        <!-- Current Memberships section -->
+        <div class="membsection">
+            <h2>Current memberships</h2>
+            <h4>Select a membership to edit the details. The name of the membership will not be edited.</h4>
+            <div class="table-responsive thead-light">
+                <table class="table table-hover">
+                    <thead class="">
+                        <tr>
+                            <th scope="col">Membership ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Sessions</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Offer</th>
+                        </tr>
+                    </thead>
+                    <% var editUrl="edit" ; %>
+                        <% var elements=JSON.parse(data2) %>
+                            <% for(let i=0; i < elements.rows.length; i++) { %>
+                                <% var myEdit="/membership/" + editUrl + "/" + elements.rows[i].id %>
+                                    <tbody class="table-striped">
+                                        <tr>
+                                            <th scope="row">
+                                                <%= elements.rows[i].id %>
+                                            </th>
+                                            <td>
+                                                <%= elements.rows[i].name %> %>
+                                            </td>
+                                            <td>
+                                                <%= elements.rows[i].typeCount %>
+                                            </td>
+                                            <td>
+                                                <%= elements.rows[i].description %>
+                                            </td>
+                                            <td>
+                                                <%= elements.rows[i].isOffer %>
+                                            </td>
+                                            <td>
+                                                <a href="<%= myEdit %>">
+                                                    <button class="btn btn-warning" type="submit">
+                                                        Edit
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <% } %>
+                </table>
+                <a href="/newmembership"><button type="button" class="btn btn-primary blk">
+                        Create Membership
+                    </button></a>
+            </div>
+        </div>
+        <!-- End of Current Memberships section -->
+
+        <!-- add Location section -->
+        <div class="locationsection">
+            <h2>Current locations</h2>
+            <h4>Select which locations you want to add and which ones you need to delete.</h4>
+            <div class="table-responsive thead-light loc">
+                <table class="table table-hover">
+                    <thead class="">
+                        <tr>
+                            <th scope="col">Location ID</th>
+                            <th scope="col">Location Name</th>
+
+                        </tr>
+                    </thead>
+                    <% var deleteUrl="delete" ; %>
+                        <% var elements=JSON.parse(data4) %>
+                            <% for(let i=0; i < elements.rows.length; i++) { %>
+                                <% var myDelete="/locations/" + deleteUrl + "/" + elements.rows[i].id %>
+
+                                    <tbody class="table-striped">
+                                        <tr>
+                                            <th scope="row">
+                                                <%= elements.rows[i].id %>
+                                            </th>
+                                            <td>
+                                                <%= elements.rows[i].location %> %>
+                                            </td>
+                                            <td>
+                                                <a href="<%= myDelete %>">
+                                                    <button class="btn btn-danger" type="submit">
+                                                        Delete
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <% } %>
+                </table>
+                <div class="pt-5">
+                    <a href="/addlocation"><button type="button" class="btn btn-primary blk">
+                            Add Location
+                        </button></a>
+                </div>
+            </div>
+        </div>
+        <!-- end of add Location section -->
+    </div>
+
+</div>

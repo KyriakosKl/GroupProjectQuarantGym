@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
+
+        /* navbar */
+        .image {
+            width: 50px;
+        }
+
+        .navbar-custom {
+            background-color: black;
+            height: 8rem;
+            font-family: 'Russo One', sans-serif;
+        }
+
+        #mobileNav {
+            z-index: 3;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .account {
+            text-decoration: none;
+            margin-top: 20px;
+            color: white;
+        }
+
+        div ul li a {
+            font-size: 1.2rem;
+        }
+
+
+        .values {
+            transform: translateY(50%);
+        }
+
+        .about-pic {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+                url('/images/aboutus.jpg');
+            height: 70vh;
+            max-width: 100%;
+            background-size: cover;
+            background-position: top;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .about-pic h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 5rem;
+        }
+
+        .containercon p {
+            padding: 1% 20%;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .containercon h2 {
+            padding: 5% 0 3% 0;
+        }
+
+        /* footer */
+        .custom-footer {
+            font-family: 'Russo One', sans-serif;
+            background-color: black;
+        }
+
+        .custom-smth {
+            font-family: 'Russo One', sans-serif;
+        }
+
+        .title-underline {
+            width: 100px;
+            border: 2px solid #7160F8;
+            background-color: #7160F8;
+            margin: 0 auto;
+        }
+
+        /* contact */
+
+        .custom-contact {
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        #contact {
+            background-color: black;
+        }
+
+        .containercon {
+            margin-bottom: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <header id="header">
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav"
+                    aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon burger-custom"><img src="/images/burger2.png" alt=""
+                            style="height: 100%; width: 100%; object-fit: contain;"></span>
+                </button>
+
+
+                <div class="navbar-collapse collapse" style="background-color: black;" id="mobileNav">
+                    <ul class="navbar-nav ml-2 mt-2">
+                        <li class="nav-item mr-2">
+                            <img src="/images/main-logo.jpg" alt="" width="50px">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/aboutus">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/trainers">Trainers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/memberships">Memberships</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#contact">Contact</a>
+                        </li>
+                        <% if(req.session.user) { %>
+                            <li class="nav-item d-lg-none">
+                                <a href="/detailsuser" class="nav-link text-white account">
+                                    <%=req.session.user.fname%>
+                                </a>
+                            </li>
+                            <% } else { %>
+                                <li class="nav-item d-lg-none">
+                                    <a href="/login" class="nav-link text-white">Sign in</a>
+                                </li>
+                                <li class="nav-item d-lg-none">
+                                    <a href="/signup" class="nav-link text-white">Sign up</a>
+                                </li>
+                                <% } %>
+                    </ul>
+                </div>
+                <% if(req.session.user) { %>
+                    <div class="m-3 text-right d-none d-lg-block"><a class="account" href="/detailsuser">
+                            <%=req.session.user.fname%><img src="/images/user.png" alt="user" width="30rem">
+                        </a></div>
+                    <% } else { %>
+                        <div class="m-3 text-right text-white d-none d-lg-block">
+                            <a href="/login" class="nav-link text-white">Sign in</a>
+                        </div>
+                        <div class="m-3 text-right text-white d-none d-lg-block">
+                            <a href="/signup" class="nav-link text-white">Sign up</a>
+                        </div>
+                        <% } %>
+            </div>
+        </nav>
+
+    </header>
+    <!--end of header  -->
+
+    <div class="about-pic">
+        <h1 class="text-capitalize text-white">our values</h1>
+    </div>
+
+    <div class="row containercon mx-3">
+        <div class="col-lg-4 md-8 d-flex justify-content-center">
+            <div class="valuesclass">
+                <h2 class="custom-smth d-flex justify-content-center">What we do</h2>
+                <hr><br>
+                <p class="text-muted">Our coaching options have been designed from the ground up to put you and your
+                    goals first. Our renowned small group coaching has been battle-tested over a decade in the field, to
+                    ensure the results you achieve are not only impressive in the short term- but also sustainable for
+                    life.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 md-8 d-flex justify-content-center main-col">
+            <div class="valuesclass">
+                <h2 class="custom-smth d-flex justify-content-center">Integrity and respect</h2>
+                <hr><br>
+                <p class="text-muted">We treat each other fairly and with dignity. We value the diversity of our
+                    workforce and our members by fostering a positive, energizing and inclusive environment. In
+                    addition, we are honest with each other and inspire trust by saying what we mean, doing what we say
+                    and taking responsibility for our actions. We will not tolerate unethical behavior.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 md-8 d-flex justify-content-center">
+            <div class="valuesclass">
+                <h2 class="custom-smth d-flex justify-content-center text-center">Authentic relationships</h2>
+                <hr><br>
+                <p class="text-muted">Serving the GymQuarantin members is our top priority. Genuinely engaging in
+                    members' lives and
+                    building real and altruistic relationships comes natural to our GQ staff.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- footer -->
+    <section class="pb-1" id="contact">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4 px-3 text-center mt-5 pt-3">
+                    <img src="/images/main-logo.jpg" class="img-fluid mb-3" alt="company image" width="150px" />
+
+                    <div class="col text-center">
+                        <h2 class="display-5 text-uppercase text-white my-4 h2title">
+                            <strong>follow us on</strong>
+                        </h2>
+                        <div class="row">
+                            <div class="col text-center">
+                                <a href="https://www.facebook.com/" class="btn">
+                                    <img src="/images/facebook.png" alt="" width="30rem">
+                                </a>
+                                <a href="https://www.instagram.com/" class="btn">
+                                    <img src="/images/instagram.png" alt="" width="30rem">
+                                </a>
+                                <a href="https://twitter.com/" class="btn">
+                                    <img src="/images/twitter.png" alt="" width="30rem">
+                                </a>
+                                <a href="https://www.youtube.com/" class="btn">
+                                    <img src="/images/youtube.png" alt="" width="30rem">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="title-underline mt-4 bg-secondary"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-5 mx-auto px-3 text-center my-5">
+                    <!-- section title -->
+                    <div class="row">
+                        <div class="col text-center mb-1">
+                            <h1 class="text-uppercase text-white custom-contact">contact us</h1>
+                            <div class="title-underline my-3 bg-secondary">
+                                <div class="title-underline__center"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of section title -->
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class="mr-3"> <i class=" text-white fas fa-map"></i> </span>
+                        <p class="text-white text-capitalize">
+                            123 main street Athens, ATT 90020
+                        </p>
+                    </div>
+
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class=" mr-3"> <i class=" text-white fas fa-phone"></i> </span>
+                        <p class="text-white text-capitalize">
+                            + 123 456 789
+                        </p>
+                    </div>
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class="mr-3"> <i class=" text-white fas fa-envelope"></i> </span>
+                        <p class="text-white text-capitalize">
+                            email@email.com
+                        </p>
+                    </div>
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class="mr-3"> <i class="text-white fas fa-clock"></i> </span>
+                        <p class="text-white text-capitalize">
+                            mon - sat 8:00 AM - 7:00 PM
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <p class="mt-2 text-capitalize text-muted text-center">Copyright 2021@ Quarantgym is registered trademark of
+            Quarantgym
+            International Ltd. All rights reserved.</p>
+    </section>
+    <!-- end of footer -->
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+<!-- membership section -->
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+    @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+    /*pricing-cards*/
+    .navbar-custom {
+        background-color: black;
+        height: 8rem;
+        width: 100%;
+        font-family: 'Russo One', sans-serif;
+    }
+
+    .custom-div {
+        z-index: 0;
+    }
+
+    #mobileNav {
+        z-index: 1;
+    }
+
+    .title-underline {
+        width: 100px;
+        border: 2px solid #d9d8e4;
+        margin: 0 auto;
+    }
+
+    #pricing-cards {
+        background: #d9d8e4;
+    }
+
+    #pricing-cards .dollar-sign {
+        font-size: 2.5em;
+    }
+
+    .single-item:hover {
+        box-shadow: 0 10px 15px rgba(0, 0, 0);
+    }
+
+    @media only screen and (max-width: 768px) {
+        .tit {
+            font-size: 40px;
+        }
+    }
+</style>
+
+<body>
+    <!-- header -->
+    <header id="header">
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav"
+                    aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon burger-custom"><img src="/images/burger2.png" alt=""
+                            style="height: 100%; width: 100%; object-fit: contain;"></span>
+                </button>
+
+
+                <div class="navbar-collapse collapse" style="background-color: black;" id="mobileNav">
+                    <ul class="navbar-nav ml-2 mt-2">
+                        <li class="nav-item mr-2">
+                            <img src="/images/main-logo.jpg" alt="" width="50px">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/aboutus">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/trainers">Trainers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/memberships">Memberships</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#contact">Contact</a>
+                        </li>
+                        <% if(req.session.user && req.session.user.isAdmin==true) { %>
+                            <li class="nav-item d-lg-none">
+                                <a href="/users/list" class="nav-link text-white account">
+                                    <%=req.session.user.fname%>
+                                </a>
+                            </li>
+                            <% } else if (req.session.user) {%>
+                                <li class="nav-item d-lg-none">
+                                    <a href="/detailsuser" class="nav-link text-white account">
+                                        <%=req.session.user.fname%>
+                                    </a>
+                                </li>
+                                <% } else { %>
+                                    <li class="nav-item d-lg-none">
+                                        <a href="/login" class="nav-link text-white">Sign in</a>
+                                    </li>
+                                    <li class="nav-item d-lg-none">
+                                        <a href="/signup" class="nav-link text-white">Sign up</a>
+                                    </li>
+                                    <% } %>
+                    </ul>
+                </div>
+                <% if(req.session.user && req.session.user.isAdmin==true) { %>
+                    <div class="m-3 text-right d-none d-lg-block"><a class="account" href="/users/list">
+                            <%=req.session.user.fname%><img src="/images/user.png" alt="user" width="30rem">
+                        </a></div>
+                    <% } else if (req.session.user) {%>
+                        <div class="m-3 text-right d-none d-lg-block"><a class="account" href="/detailsuser">
+                                <%=req.session.user.fname%><img src="/images/user.png" alt="user" width="30rem">
+                            </a></div>
+
+                        <% } else { %>
+                            <div class="m-3 text-right text-white d-none d-lg-block">
+                                <a href="/login" class="nav-link text-white">Sign in</a>
+                            </div>
+                            <div class="m-3 text-right text-white d-none d-lg-block">
+                                <a href="/signup" class="nav-link text-white">Sign up</a>
+                            </div>
+                            <% } %>
+            </div>
+        </nav>
+
+    </header>
+    <!-- end of header -->
+
+    <div class="row">
+        <div class="col title text-center py-5">
+            <h1 class="text-uppercase display-3 tit">
+                <%= title %>
+            </h1>
+            <div class="title-underline"></div>
+        </div>
+    </div>
+    <div></div>
+    <section id="pricing-cards" class="py-1">
+        <div class="container">
+
+            <div class="row">
+                <% data.forEach(elem=> { %>
+
+                    <div class="col-lg-4 col-md-6 my-5">
+                        <form method="post">
+                            <div>
+                                <input type="hidden" name="id" value="<%= elem.id %>" />
+                            </div>
+                            <div class="card card-body text-center single-item">
+                                <div class="card-title">
+                                    <h3 class="text-muted">
+                                        <%= elem.name %>
+                                    </h3>
+                                </div>
+                                <input type="hidden" name="name" value="<%= elem.name %>" />
+                                <div class="card-text d-flex justify-content-center">
+                                    <span class="dollar-sign align-self-start">$/</span>
+                                    <span>
+                                        <p class="display-1 mb-0">
+                                            <%= elem.price %>
+                                        </p>
+                                    </span>
+                                </div>
+                                <input type="hidden" name="price" value="<%= elem.price %>" />
+                                <div class="card-text">
+                                    <h4>per month</h4>
+                                </div>
+
+                                <ul class="list-group list-group-flush my-5">
+                                    <a href="#" class="list-group-item first list-group-item-action text-uppercase"><i
+                                            class="fa fa-star-o text-warning float-left "></i><strong>
+                                            <%= elem.typecount %>
+                                        </strong>sessions
+                                    </a>
+                                    <input type="hidden" name="typecount" value="<%= elem.typecount %>" />
+                                    <a href="#" class="list-group-item list-group-item-action"><i
+                                            class="fa fa-star-o text-warning float-left"></i>
+                                        <%= elem.description %>
+                                    </a>
+                                    <input type="hidden" name="description" value="<%= elem.description %>" />
+
+                                </ul>
+                                <input type="hidden" name="startDate" id="StartDate"
+                                    value="<%= new Date().toLocaleString() %>">
+                                <input type="hidden" name="isCancelled" id="isCancelled" value="false">
+                                <button type="submit" class="btn btn-lg btn-dark text-uppercase">
+                                    Select
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <% }) %>
+            </div>
+
+        </div>
+    </section>
+    <!-- end of membership section -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+

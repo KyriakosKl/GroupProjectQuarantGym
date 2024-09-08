@@ -1,0 +1,177 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+    @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+    body {
+        /* background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4) ) */
+        /* url('https://i.ibb.co/vYSnxCX/i-Stock-1191744336.jpg')*/
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/iStock-1191744336.jpg');
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .custom-div {
+        z-index: 0;
+    }
+
+    #mobileNav {
+        z-index: 1;
+    }
+
+    .navbar-custom {
+        background-color: black;
+        height: 8rem;
+        font-family: 'Russo One', sans-serif;
+    }
+
+    form {
+        width: 460px;
+    }
+
+    .logincontainer {
+        padding-top: 80px;
+
+    }
+
+    .form-login {
+        height: 400px;
+        margin: auto;
+        background-color: white;
+        padding: 15px 30px 50px;
+        border: 0.2rem solid #e5e5e5;
+        border-radius: 10px;
+    }
+
+    input[type='email'] {
+        border-radius: 0.4rem;
+    }
+
+    input[type='password'] {
+        border-radius: 0.4rem;
+    }
+
+    input[type="submit"]:hover {
+        background: #0165b6;
+    }
+
+    .errorText {
+        color: red;
+        font-size: 90%;
+    }
+
+    @media only screen and (max-width: 768px) {
+        form {
+            width: 310px;
+            /* height: 40%; */
+        }
+
+        .logincontainer {
+            padding-top: 10px;
+        }
+
+        .form-login {
+            height: 50%;
+        }
+    }
+</style>
+
+<body>
+
+    <!-- header -->
+    <header id="header">
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav"
+                    aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon burger-custom"><img src="/images/burger2.png" alt=""
+                            style="height: 100%; width: 100%; object-fit: contain;"></span>
+                </button>
+
+
+                <div class="navbar-collapse collapse" style="background-color: black;" id="mobileNav">
+                    <ul class="navbar-nav ml-2 mt-2">
+                        <li class="nav-item mr-2">
+                            <img src="/images/main-logo.jpg" alt="" width="50px">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/aboutus">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/trainers">Trainers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/memberships">Memberships</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#contact">Contact</a>
+                        </li>
+                        <% if(req.session.user) { %>
+                            <li class="nav-item d-lg-none">
+                                <a href="/detailsuser" class="nav-link text-white account">
+                                    <%=req.session.user.fname%>
+                                </a>
+                            </li>
+                            <% } else { %>
+
+                                <li class="nav-item d-lg-none">
+                                    <a href="/signup" class="nav-link text-white">Sign up</a>
+                                </li>
+                                <% } %>
+                    </ul>
+                </div>
+                <% if(req.session.user) { %>
+                    <div class="m-3 text-right d-none d-lg-block"><a class="account" href="/detailsuser">
+                            <%=req.session.user.fname%><img src="/images/user.png" alt="user" width="30rem">
+                        </a></div>
+                    <% } else { %>
+
+                        <div class="m-3 text-right text-white d-none d-lg-block">
+                            <a href="/signup" class="nav-link text-white">Sign up</a>
+                        </div>
+                        <% } %>
+            </div>
+        </nav>
+
+    </header>
+    <!-- end of header -->
+    <div class="logincontainer">
+        <div class="text-center mt-5">
+            <form action="" method="POST" class="form-login" name="loginForm">
+                <img src="" alt="">
+                <h1 class="mt-4 h1 mb-4 font-weight-dark login-title"> Sign in</h1>
+                <label for="email" class="sr-only">Email address</label>
+                <input type="text" name="email" id="email" class="form-control mb-3" placeholder="Email address"
+                    autofocus>
+                <!-- <div class="errorText" id="emailError"></div> -->
+
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" name="password" id="password" class="form-control mb-3" placeholder="password">
+                <div class="errorText" id="pswdError"></div>
+
+                <div class="mt-5">
+                    <button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>

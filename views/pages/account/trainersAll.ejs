@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+
+    <link rel="stylesheet" href="trainer_list.css">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+        @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+        body {
+            background: rgb(229, 230, 233)
+        }
+
+        .navbar-custom {
+            background-color: black;
+            height: 8rem;
+            font-family: 'Russo One', sans-serif;
+        }
+
+        .custom-div {
+            z-index: 0;
+        }
+
+        #mobileNav {
+            z-index: 1;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .profile-button {
+            background: #7160F8;
+            box-shadow: none;
+            border: none
+        }
+
+        .profile-button:hover {
+            background: #0a090a
+        }
+
+        .description {
+            text-align: justify;
+        }
+
+        .link {
+            color: white;
+        }
+
+        .trainerbox {
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <header id="header">
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav"
+                    aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon burger-custom"><img src="/images/burger2.png" alt=""
+                            style="height: 100%; width: 100%; object-fit: contain;"></span>
+                </button>
+
+
+                <div class="navbar-collapse collapse" style="background-color: black;" id="mobileNav">
+                    <ul class="navbar-nav ml-2 mt-2">
+                        <li class="nav-item mr-2">
+                            <img src="/images/main-logo.jpg" alt="" width="50px">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/aboutus">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/trainers">Trainers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/memberships">Memberships</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#contact">Contact</a>
+                        </li>
+                        <% if(req.session.user) { %>
+                            <li class="nav-item d-lg-none">
+                                <a href="/detailsuser" class="nav-link text-white account">
+                                    <%=req.session.user.fname%>
+                                </a>
+                            </li>
+                            <% } else { %>
+                                <li class="nav-item d-lg-none">
+                                    <a href="/login" class="nav-link text-white">Sign in</a>
+                                </li>
+                                <li class="nav-item d-lg-none">
+                                    <a href="/signup" class="nav-link text-white">Sign up</a>
+                                </li>
+                                <% } %>
+                    </ul>
+                </div>
+                <% if(req.session.user) { %>
+                    <div class="m-3 text-right d-none d-lg-block"><a class="account" href="/detailsuser">
+                            <%=req.session.user.fname%><img src="/images/user.png" alt="user" width="30rem">
+                        </a></div>
+                    <% } else { %>
+                        <div class="m-3 text-right text-white d-none d-lg-block">
+                            <a href="/login" class="nav-link text-white">Sign in</a>
+                        </div>
+                        <div class="m-3 text-right text-white d-none d-lg-block">
+                            <a href="/signup" class="nav-link text-white">Sign up</a>
+                        </div>
+                        <% } %>
+            </div>
+        </nav>
+
+    </header>
+    <!-- end of header -->
+    <div class="trainerbox mb-3">
+        <% var bookUrl="book" ; %>
+            <% for (let i=0; i < data.length; i++) { %>
+                <% var myBook="/trainers/" + bookUrl + "/" + data[i].id; %>
+
+                    <div class="container rounded bg-white mt-5">
+
+                        <div class="row py-2 mb-3">
+
+                            <div class="col-sm-6 col-md-4 col-lg-3 mt-2">
+                                <div class="card card-inverse card-info ">
+                                    <img class="card-img-top" src="<%=data[i]._imageLocation%>">
+                                    <div class="card-block">
+
+                                        <!-- <h4 class="card-title text-center">Personal trainer</h4> -->
+                                        <div class="card-text text-center text-muted">
+                                            Train with me!
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer d-flex justify-content-between">
+                                        <a href="#" class=""><i class="fab fa-facebook primary-color"></i></a>
+                                        <a href="#" class=""><i class="fab fa-twitter primary-color"></i></a>
+                                        <a href="#" class=""><i class="fab fa-instagram primary-color"></i></a>
+                                        <a href="#" class=""><i class="fab fa-youtube primary-color"></i></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="p-3 py-2">
+                                    <div class="d-flex justify-content-start mb-3">
+                                        <div class="d-flex flex-row align-items-center back"><i
+                                                class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                                            <h5 class="mr-3">
+                                                <%=data[i].fname%>
+                                            </h5>
+                                        </div>
+                                        <h5 class="text-right">
+                                            <%=data[i].lname%>
+                                        </h5>
+                                    </div>
+                                    <hr>
+                                    <div class="text-center mt-5">
+                                        <h6 class="description text-muted">
+                                            <%=data[i].bio%>
+                                        </h6>
+                                    </div>
+
+                                    <div class="mt-5 text-right">
+                                        <a class="link" href="<%=myBook%>"><button
+                                                class="btn btn-primary profile-button" type="button">Book
+                                                now</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

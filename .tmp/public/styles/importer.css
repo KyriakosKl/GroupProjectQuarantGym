@@ -1,0 +1,203 @@
+/**
+ * importer.less
+ *
+ * By default, new Sails projects are configured to compile this file
+ * from LESS to CSS.  Unlike CSS files, LESS files are not compiled and
+ * included automatically unless they are imported below.
+ *
+ * For more information see:
+ *   https://sailsjs.com/anatomy/assets/styles/importer-less
+ */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: helvetica, sans-serif;
+  color: #555;
+  background-color: aliceblue;
+}
+body .chat-page {
+  background-image: radial-gradient(circle 5px at top left, rgba(226, 226, 226, 0.1) 0%, rgba(226, 226, 226, 0.1) 50%, rgba(201, 201, 201, 0.1) 50%, rgba(201, 201, 201, 0.1) 30%, transparent 30%, transparent 50%), linear-gradient(90deg, #333333, #333333);
+  background-size: 11px 11px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+body .chat-page .hidden,
+body .chat-page .template {
+  display: none !important;
+}
+body .chat-page .header {
+  margin-bottom: 28px;
+  display: flex;
+  flex-shrink: 0;
+  color: #eee;
+  height: 60px;
+  padding: 10px;
+}
+body .chat-page .header h1 {
+  margin-bottom: 0px;
+}
+body .chat-page .buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 15%;
+  padding: 5px 10px;
+}
+body .chat-page .btn {
+  display: flex;
+  background-color: #9486fe;
+  border-radius: 10px;
+  padding: 8px 20px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+body .chat-page .btn:hover {
+  background-color: #7f6efe;
+  box-shadow: 1px 1px 6px 1px #cbcbcb , 1px 1px 6px 1px #9b9a9a ;
+}
+body .chat-page a:link {
+  text-decoration: none;
+}
+body .chat-page .main {
+  padding: 10px;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+body .chat-page .main .chat-room-section {
+  flex: 1;
+  border: 1px double  #555;
+  background-color: #f9f9f9;
+  padding: 5px;
+  position: relative;
+  display: flex;
+}
+body .chat-page .main .chat-room-section .chat-transcript-container {
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+  z-index: 1;
+}
+body .chat-page .main .chat-room-section .chat-transcript-container .chat-transcript {
+  line-height: 25px;
+  padding-bottom: 70px;
+}
+body .chat-page .main .chat-room-section .chat-transcript-container .chat-transcript .chat-line {
+  background-color: rgba(201, 194, 255, 0.3);
+  border-radius: 0 20px 10px 15px;
+  width: 90%;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+body .chat-page .main .chat-room-section .chat-transcript-container .chat-transcript .chat-line .username {
+  font-weight: bold;
+}
+body .chat-page .main .chat-room-section .chat-transcript-container .chat-transcript .admin-chat-line {
+  background-color: #999;
+}
+body .chat-page .main .chat-room-section .chat-transcript-container .chat-transcript .admin-chat-line .text {
+  font-weight: bold;
+}
+body .chat-page .main .chat-room-section .chat-controls-container {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  bottom: 40px;
+  left: 0px;
+  right: 0px;
+  background-color: #eee;
+  z-index: 2;
+  font-size: 30px;
+}
+body .chat-page .main .chat-room-section .chat-controls-container .chat-controls {
+  display: flex;
+  padding-top: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  background-image: radial-gradient(circle 5px at top left, rgba(226, 226, 226, 0.1) 0%, rgba(226, 226, 226, 0.1) 50%, rgba(201, 201, 201, 0.1) 50%, rgba(201, 201, 201, 0.1) 30%, transparent 30%, transparent 50%), linear-gradient(90deg, #333333, #333333);
+  background-size: 11px 11px;
+}
+body .chat-page .main .chat-room-section .chat-controls-container .chat-controls input {
+  align-self: stretch;
+  font-size: 18px;
+  padding: 10px 10px;
+}
+body .chat-page .main .chat-room-section .chat-controls-container .chat-controls .chat-input {
+  padding-top: 20px;
+  flex: 3;
+}
+body .chat-page .main .chat-room-section .chat-controls-container .chat-controls .send-chat-button {
+  flex-shrink: 0;
+  background-color: #9486fe;
+  color: white;
+  border: none;
+  padding: 5px 2px;
+  font-size: 16px;
+  border-radius: 0 25px 25px 0;
+  width: 100px;
+  z-index: 0;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+body .chat-page .main .chat-room-section .chat-controls-container .chat-controls .send-chat-button:hover {
+  background-color: #7f6efe;
+  box-shadow: 1px 1px 6px 1px #cbcbcb , 1px 1px 6px 1px #9b9a9a ;
+}
+body .chat-page .main .user-list-section {
+  flex-shrink: 0;
+  width: 20%;
+  background-color: #f2f2f2;
+}
+@media only screen and (max-width: 768px) {
+  body .chat-page .main .user-list-section .user-list-section {
+    width: 40px;
+  }
+}
+body .chat-page .main .user-list-section .header {
+  background-color: #494949;
+  color: #fff;
+  font-weight: bold;
+  height: 20px;
+  margin: 0px 0px 5px 0px;
+}
+body .chat-page .main .user-list-section .user-list {
+  list-style: none;
+  padding: 0px 0px 0px 5px;
+  line-height: 20px;
+  margin: 0px;
+}
+body .chat-page .main .user-list-section .user-list .offline {
+  font-style: italic;
+  color: #999;
+}
+.login-page {
+  text-align: center;
+  margin-top: 10%;
+  font-size: 1.5em;
+}
+.login-page input {
+  width: 300px;
+  height: 40px;
+  font-size: 24px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+.login-page button {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+}
+/*! This special bang (!) comment is here to trick the `hash` Grunt task into working out-of-the-box, without any real CSS. You can delete this once you've imported ≥1 .less file as demonstrated above. */

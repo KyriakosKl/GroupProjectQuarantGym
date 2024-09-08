@@ -1,0 +1,132 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+    body {
+        font-size: 16px;
+        background: #f9f9f9;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    h2 {
+        text-align: center;
+        text-decoration: underline dotted blanchedalmond;
+    }
+
+    form {
+        width: 300px;
+        background: #fff;
+        padding: 15px 40px 40px;
+        border: 1px solid #ccc;
+        margin: 50px auto 0;
+        border-radius: 5px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px
+    }
+
+    label i {
+        color: #999;
+        font-size: 80%;
+    }
+
+    input,
+    textarea,
+    select {
+        border: 1px solid #ccc;
+        padding: 10px;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 2px;
+    }
+
+    textarea {
+        height: 120px;
+        resize: none;
+    }
+
+    .row {
+        padding-bottom: 10px;
+    }
+
+    .form-inline {
+        border: 1px solid #ccc;
+        padding: 8px 10px 4px;
+        border-radius: 2px;
+    }
+
+    .form-inline label,
+    .form-inline input {
+        display: inline-block;
+        width: auto;
+        padding-right: 15px;
+    }
+
+    .errorText {
+        color: red;
+        font-size: 90%;
+    }
+
+    input[type="submit"] {
+        font-size: 110%;
+        font-weight: 100;
+        background: #006dcc;
+        border-color: #016BC1;
+        box-shadow: 0 3px 0 #0165b6;
+        color: #fff;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background: #0165b6;
+    }
+</style>
+
+<body>
+    
+    <form name="signUpForm" action="" method="POST">
+        <h2>Create a new Membership</h2>
+        <section class="row">
+            <label>Name</label>
+            <input list="namelist" id="name" minlength="3" maxlength="50" name="name" required />
+            <datalist id="namelist">
+                <option value="Bronze">
+                <option value="Silver">
+                <option value="Gold">
+                <option value="Special Offer">
+            </datalist>
+        </section>
+        <section class="row">
+            <label>Typecount</label>
+            <input list="countlist" type="number" id="typeCount" min="1" max="120" name="typeCount" required/>
+            <datalist id="countlist">
+                <option value="4">
+                <option value="8">
+                <option value="20">
+                <option value="10">
+            </datalist>
+        </section>
+        <section class="row">
+            <label>Description</label>
+            <textarea type="text" name="description" minlength="15" maxlength="120"  required></textarea>
+        </section>
+        <section class="row">
+            <label>Offer</label>
+            <input list="offerlist" id="isOffer" name="isOffer" required/>
+            <datalist id="offerlist">
+                <option value="true">
+                <option value="false">
+            </datalist>
+        </section>
+
+
+        <section class="row">
+            <input type="submit" value="Create">
+        </section>
+
+    </form>
+
+</body>

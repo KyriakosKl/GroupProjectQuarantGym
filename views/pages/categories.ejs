@@ -1,0 +1,406 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="/Users/Plfrantic/Downloads/Group-project-main/Group-project-main/my_group_files/Categories/catstyles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="trainings.css">
+    <title>Document</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+        @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+        body {
+            background-color: rgb(247, 246, 255);
+        }
+
+        .navbar-custom {
+            background-color: black;
+            height: 8rem;
+            font-family: 'Russo One', sans-serif;
+        }
+
+
+        .account {
+            text-decoration: none;
+            margin-top: 20px;
+            color: white;
+
+        }
+
+        .custom-div {
+            z-index: 0;
+        }
+
+        #mobileNav {
+            z-index: 1;
+        }
+
+        div ul li a {
+            font-size: 1.2rem;
+        }
+
+        h3 {
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        h1 {
+            font-family: 'Russo One', sans-serif;
+            margin: 2% 0;
+        }
+
+        h1:hover {
+            transform: translateY(-0.15em);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        a:hover {
+            color: rgb(253, 168, 10);
+        }
+
+        a {
+            color: black;
+        }
+
+        .h1-main {
+            background-color: #9a8ef3;
+        }
+
+        .display-text-a {
+            border-radius: 10px;
+        }
+
+        .display-text-b {
+            display: flex;
+            justify-content: left;
+            border-radius: 10px;
+        }
+
+
+        /* button {
+            background: none;
+            color: #6098ff;
+            border: 2px solid;
+            padding: 1em 2em;
+            font-size: 1em;
+            transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+        }
+
+        button:hover {
+            border-color: #e75cff;
+            color: white;
+            box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
+            transform: translateY(-0.25em);
+            cursor: pointer;
+        } */
+        .btn-see {
+            text-decoration: none;
+            border: 1px solid #7160F8;
+            position: relative;
+            background-color: rgb(15, 15, 15);
+            overflow: hidden;
+            font-size: 1.1rem;
+            padding: 0.8rem 2.2rem;
+            color: rgb(225, 202, 247);
+            text-transform: uppercase;
+            border-radius: 10px;
+            font-family: 'Russo One', sans-serif;
+            letter-spacing: 0.15rem;
+        }
+
+        .btn-see:hover {
+            box-shadow: 1px 1px 10px 3px #7160F8;
+        }
+
+        .btn-see:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg,
+                    transparent,
+                    /* rgb(103, 77, 197), */
+                    silver,
+                    transparent);
+            transition: all 650ms;
+        }
+
+        .btn-see:hover:before {
+            left: 100%;
+        }
+
+        .content-divider {
+            height: 0.5rem;
+            background: linear-gradient(to left,
+                    #7160F8,
+                    rgb(230, 234, 247),
+                    #7160F8);
+        }
+
+        .custom-footer {
+            font-family: 'Russo One', sans-serif;
+            background-color: black;
+        }
+
+        /* contact */
+
+        .custom-contact {
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        #contact {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <!-- menu bar -->
+        <header id="header">
+            <nav class="navbar navbar-expand-lg navbar-custom">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav"
+                        aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon burger-custom"><img src="/images/burgerIcon.png" alt=""
+                                style="height: 100%; width: 100%; object-fit: contain;"></span>
+                    </button>
+
+
+                    <div class="navbar-collapse collapse " style="background-color: black;" id="mobileNav">
+                        <ul class="navbar-nav ml-3">
+                            <li class="nav-item">
+                                <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/trainers">Trainers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/memberships">Memberships</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#contact">Contact</a>
+                            </li>
+                            <% if(req.session.user) { %>
+                                <li class="nav-item d-lg-none">
+                                    <a href="/detailsuser" class="nav-link text-white account">
+                                        <%=req.session.user.fname%>
+                                    </a>
+                                </li>
+                                <% } else { %>
+                                    <li class="nav-item d-lg-none">
+                                        <a href="/login" class="nav-link text-white">Sign in</a>
+                                    </li>
+                                    <li class="nav-item d-lg-none">
+                                        <a href="/signup" class="nav-link text-white">Sign up</a>
+                                    </li>
+                                    <% } %>
+                        </ul>
+                    </div>
+                    <% if(req.session.user) { %>
+                        <div class="m-3 text-right d-none d-lg-block"><a class="account" href="/detailsuser">
+                                <%=req.session.user.fname%><img src="/images/user.png" alt="user" width="30rem">
+                            </a></div>
+                        <% } else { %>
+                            <div class="m-3 text-right text-white d-none d-lg-block">
+                                <a href="/login" class="nav-link text-white">Sign in</a>
+                            </div>
+                            <div class="m-3 text-right text-white d-none d-lg-block">
+                                <a href="/signup" class="nav-link text-white">Sign up</a>
+                            </div>
+                            <% } %>
+                </div>
+            </nav>
+
+        </header>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-12 text-right  display-text-a">
+                <h1><a href="/locations" style="text-decoration: none;">Locations</a></h1>
+            </div>
+            <div class="col-lg-6 col-md-12 display-text-b h1-main">
+                <h1><a href="" style="text-decoration: none;">Workouts</a></h1>
+            </div>
+        </div>
+        <hr>
+
+        <!-- end of menu bar -->
+
+        <div class="row mt-2 mx-1 custom-div">
+            <div class="col-lg-6 col-md-12">
+                <img src="/images/pilates2.png" width="100%">
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <h3 class="mb-5 d-flex justify-content-center pt-5">Pilates</h3>
+                <p class="text-muted">Experience a unique and transformative approach to pilates that will have you
+                    feeling not just
+                    stronger, longer, and leaner but also relieved of physical tension and mental stress. Create
+                    sustainable and lasting change that will help you feel and look your most confident. Whether Pilates
+                    is second nature to you, or if you’re a beginner, a mom, business woman or both… The Pilates Class
+                    is for you.</p>
+
+            </div>
+        </div>
+        <hr class="d-lg-none">
+        <div class="content-divider"></div>
+
+        <div class="row mx-1">
+
+            <div class="col-lg-6 col-md-12 cst-div">
+                <h3 class="d-flex justify-content-center pt-5 mb-5">TRX</h3>
+                <p class="text-muted">Whether beginning a fitness journey or pushing toward your summit, TRX Training
+                    helps you move
+                    better, feel better, and live better. ALL LEVELS, ALL GOALS means it's literally for ALL OF YOU:
+                    Beginners, Pro Athletes, Runners, Yogis, Cyclists, Cross-Trainers, Service members, Combat Athletes,
+                    and more.</p>
+
+
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <img src="/images/trx.jpeg" width="100%">
+            </div>
+
+        </div>
+        <hr class="d-lg-none">
+        <div class="content-divider"></div>
+
+        <div class="row mx-1">
+            <div class="col-lg-6 col-md-12">
+                <img src="/images/aerobics.jpeg" width="100%">
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <h3 class="mb-5 d-flex justify-content-center pt-5">Aerobics</h3>
+                <p class="text-muted">Cardio exercise, which is sometimes referred to as aerobic exercise, is any
+                    rhythmic activity that
+                    raises your heart rate into your target heart rate zone. This is the zone where you burn the most
+                    fat and calories.Part of what sets cardio apart from other types of exercise—such as strength
+                    training, for instance—is that it relies on your body's ability to use oxygen during the workout
+                    session. A person's cardio ability or capacity can vary based on a number of factors.</p>
+
+            </div>
+        </div>
+        <hr class="d-lg-none">
+        <div class="content-divider"></div>
+
+        <div class="row mx-1">
+            <div class="col-lg-6 col-md-12">
+                <h3 class="d-flex justify-content-center pt-5 mb-5">Crossfits</h3>
+                <p class="text-muted">A form of high intensity interval training, CrossFit is a strength and
+                    conditioning workout that is
+                    made up of functional movement performed at a high intensity level.These movements are actions that
+                    you perform in your day-to-day life, like squatting, pulling,
+                    pushing etc. Many workouts feature variations of squats, push-ups, and weight lifting that last for
+                    predetermined amounts of time to help build muscles. This varies from a traditional workout that may
+                    tell you how many reps to do over any period of time.</p>
+
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <img src="/images/crossfit.jpeg" width="100%">
+            </div>
+        </div>
+    </section>
+    <div class="content-divider"></div>
+    <!-- footer -->
+    <section class="pb-1" id="contact">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4 px-3 text-center my-5 pt-3">
+                    <img src="/images/main-logo.jpg" class="img-fluid mb-3" alt="company image" width="150px" />
+
+                    <div class="col text-center">
+                        <h2 class="display-5 text-uppercase text-white my-4 h2title">
+                            <strong>follow us on</strong>
+                        </h2>
+                        <div class="row">
+                            <div class="col text-center">
+                                <a href="https://www.facebook.com/" class="btn">
+                                    <img src="/images/facebook.png" alt="" width="30rem">
+                                </a>
+                                <a href="https://www.instagram.com/" class="btn">
+                                    <img src="/images/instagram.png" alt="" width="30rem">
+                                </a>
+                                <a href="https://twitter.com/" class="btn">
+                                    <img src="/images/twitter.png" alt="" width="30rem">
+                                </a>
+                                <a href="https://www.youtube.com/" class="btn">
+                                    <img src="/images/youtube.png" alt="" width="30rem">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="title-underline mt-4 bg-secondary"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-5 mx-auto px-3 text-center my-5">
+                    <!-- section title -->
+                    <div class="row">
+                        <div class="col text-center mb-1">
+                            <h1 class="text-uppercase text-white custom-contact">contact us</h1>
+                            <div class="title-underline my-3 bg-secondary">
+                                <div class="title-underline__center"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of section title -->
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class="mr-3"> <i class=" text-white fas fa-map"></i> </span>
+                        <p class="text-white text-capitalize">
+                            123 main street Athens, ATT 90020
+                        </p>
+                    </div>
+
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class=" mr-3"> <i class=" text-white fas fa-phone"></i> </span>
+                        <p class="text-white text-capitalize">
+                            + 123 456 789
+                        </p>
+                    </div>
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class="mr-3"> <i class=" text-white fas fa-envelope"></i> </span>
+                        <p class="text-white text-capitalize">
+                            email@email.com
+                        </p>
+                    </div>
+
+                    <div class="single-contact px-5 my-3 d-flex justify-content-between">
+                        <span class="mr-3"> <i class="text-white fas fa-clock"></i> </span>
+                        <p class="text-white text-capitalize">
+                            mon - sat 8:00 AM - 7:00 PM
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <p class="mt-2 text-capitalize text-muted text-center">Copyright 2021@ Quarantgym is registered
+            trademark of
+            Quarantgym
+            International Ltd. All rights reserved.</p>
+    </section>
+    <!-- end of footer -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>

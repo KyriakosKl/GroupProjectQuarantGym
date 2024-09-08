@@ -1,0 +1,52 @@
+{
+  "name": "y",
+  "private": true,
+  "version": "0.0.1",
+  "description": "CB12 PT Javascript Group Project",
+  "keywords": [],
+  "dependencies": {
+    "@sailshq/connect-redis": "^3.2.1",
+    "@sailshq/lodash": "^3.10.3",
+    "@sailshq/socket.io-redis": "^5.2.0",
+    "bcryptjs": "^2.4.3",
+    "crypto-random-string": "^3.3.1",
+    "dateformat": "^4.5.1",
+    "ejs": "^3.1.6",
+    "glob": "^7.1.6",
+    "grunt": "1.0.4",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
+    "resize-image": "^0.1.0",
+    "sails": "^1.4.0",
+    "sails-hook-grunt": "^4.0.0",
+    "sails-hook-orm": "^3.0.1",
+    "sails-hook-sockets": "^2.0.0",
+    "sails-mysql": "^1.0.1",
+    "sharp": "^0.27.2",
+    "skipper": "^0.8.7",
+    "treeify": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "5.16.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node app.js",
+    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
+    "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
+    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dimitrismavrokefalos/test-project-2.git"
+  },
+  "author": "dimitrismavrokefalos",
+  "license": "ISC",
+  "engines": {
+    "node": "^14.13"
+  },
+  "bugs": {
+    "url": "https://github.com/dimitrismavrokefalos/test-project-2/issues"
+  },
+  "homepage": "https://github.com/dimitrismavrokefalos/test-project-2#readme"
+}

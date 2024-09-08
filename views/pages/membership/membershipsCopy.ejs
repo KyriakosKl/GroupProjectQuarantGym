@@ -1,0 +1,59 @@
+<style>
+    #memberships {
+        display: flex;
+        padding: 20px;
+    }
+
+    .membership {
+        border: 1px solid #000;
+        text-align: center;
+        margin: 10px 20px;
+        padding: 20px;
+    }
+
+    button {
+        background-color: orange;
+        font-size: 20px;
+        color: white;
+        border-radius: 10px;
+        border: none;
+        padding: 10px 20px;
+    }
+</style>
+<h1>Our Memberships</h1>
+<div id="memberships">
+    <% data.forEach(elem=> { %>
+        <% console.log(elem) %>
+            <form method="post">
+                <div class="membership">
+                    <div>
+                        <input type="hidden" name="id" value="<%= elem.id %>">
+                    </div>
+                    <div>
+                        <p>
+                            <%= elem.name %>
+                        </p>
+                        <input type="hidden" name="name" value="<%= elem.name %>">
+                    </div>
+                    <div>
+                        <p>Trainings: <%= elem.typecount %>
+                        </p>
+                        <input type="hidden" name="typecount" value="<%= elem.typecount %>">
+                    </div>
+                    <div>
+                        <p>Summary: <%= elem.description %>
+                        </p>
+                        <input type="hidden" name="description" value="<%= elem.description %>">
+                    </div>
+                    <div>
+                        <p>Price: <%= elem.price %>€/year
+                        </p>
+                        <input type="hidden" name="price" value="<%= elem.price %>">
+                    </div>
+                    <input type="hidden" name="startDate" id="StartDate" value="<%= new Date().toLocaleString() %>">
+
+                    <button type="submit" class="btn">Buy</button>
+                </div>
+            </form>
+            <% }) %>
+</div>

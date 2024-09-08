@@ -1,0 +1,143 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+<style>
+    .wrapper {
+        position: relative;
+        perspective: 40em;
+        display: grid;
+        transform-style: preserve-3d;
+    }
+
+    .text {
+        color: white;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        position: relative;
+        top: 100px;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .card {
+        grid-area: 1 / 1;
+        height: 250px;
+        width: 500px;
+        transform: translateX(10px) rotateY(25deg) rotateX(10deg);
+        background: rgba(245, 152, 39, 0.88);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 30px;
+        color: #000;
+        text-transform: uppercase;
+        font-size: 60px;
+        font-weight: 900;
+        backface-visibility: hidden;
+        box-shadow: 0 10px 30px -3px rgba(0, 0, 0, .1);
+        position: relative;
+    }
+
+    h1 {
+        font-size: 60px;
+        font-weight: 900;
+        box-shadow: 10px 10px 30px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .title1 {
+        color: #fff;
+        font-size: 50px;
+        padding: 0 30px;
+    }
+
+    .card .enclosed {
+        background: #000;
+        line-height: 1;
+        color: rgb(240, 175, 64);
+        padding: 20px 40px;
+        position: absolute;
+        top: 111px;
+        left: -25px;
+        text-align: center;
+        display: inline-block;
+        transform: translate(-1px, 1px) scale(0.75);
+        transform-origin: right center;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+    }
+
+    .wrapper:before {
+        --bw: 9px;
+        grid-area: 1 / 1;
+        content: '';
+        backface-visibility: hidden;
+        height: 100%;
+        width: 100%;
+        margin-top: calc(-1 * var(--bw));
+        margin-left: calc(-1 * var(--bw));
+        background: transparent;
+        transform: translateX(-60px) rotateY(-30deg) rotateX(15deg) scale(1.03);
+        pointer-events: none;
+        border: var(--bw) solid #000;
+        box-sizing: content-box;
+    }
+
+
+    .wrapper:hover>div,
+    .wrapper:hover:before {
+        transform: none;
+    }
+
+
+    .wrapper>div,
+    .wrapper:before {
+        will-change: transform;
+        transition: .3s transform cubic-bezier(.25, .46, .45, 1);
+    }
+
+    .enclosed {
+        padding: 20px 30px;
+        font-size: 50px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: .4s ease-in-out;
+    }
+
+
+    .card .enclosed:hover {
+        /* background: #fff; */
+        color: #eee;
+        transform: scale(0.78);
+        box-shadow: 5px 10px 30px -3px rgba(0, 0, 0, .1);
+    }
+
+    html,
+    body {
+        height: 100vh;
+    }
+
+    body {
+        display: grid;
+        place-items: center;
+        background:
+            linear-gradient(to bottom right, #7160F8 15%, transparent),
+            radial-gradient(circle at 100% 0%, rgba(255, 255, 255, .2) 10%, transparent 20%) center center / 15px 15px,
+            linear-gradient(to bottom right, #6f78c1, #95c4dc);
+    }
+</style>
+
+
+<div class="text">
+    <!-- <p class="title1">You need to become a member <br>to access this page. </p> -->
+    <p class="title1">
+        <%= data %>
+    </p>
+</div>
+<div class="wrapper">
+    <div class="card">
+        <a href="/memberships">
+            <h1>
+                <button class="enclosed">GET <span>membership</span></button>
+            </h1>
+        </a>
+    </div>
+</div>
